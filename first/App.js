@@ -6,36 +6,42 @@
  * @flow strict-local
  */
 
-import React, {Component} from 'react';
-import {StyleSheet, View, TouchableOpacity, TouchableOpacityBase, Text} from 'react-native';
+import React, { Component } from 'react'
+import { StyleSheet, View, TouchableOpacity, TouchableOpacityBase, Text } from 'react-native'
 
-import CustomButton from './src/components/CustomButton/CustomButton';
+import CustomButton from './src/components/CustomButton/CustomButton'
 
 class App extends Component {
-
   constructor(props) {
     super(props)
 
     this.state = {
-      counter: 0,
+      counter: 0
     }
+
+    console.log('contructor')
 
     this.handleDown = this.handleDown.bind(this)
     this.handleUp = this.handleUp.bind(this)
   }
 
+  componentDidMount() {
+    //for asyncronous requested
+    console.log('componentDidMount')
+  }
+
   handleUp() {
-    const {counter: ct} = this.state;
-    this.setState({counter: ct + 1})
+    const { counter: ct } = this.state
+    this.setState({ counter: ct + 1 })
   }
 
   handleDown() {
-    const {counter: ct} = this.state;
-    this.setState({counter: ct - 1})
+    const { counter: ct } = this.state
+    this.setState({ counter: ct - 1 })
   }
 
   render() {
-    const {counter} = this.state
+    const { counter } = this.state
     return (
       <View style={styles.constainer}>
         <View style={styles.subcontainer}>
@@ -46,7 +52,7 @@ class App extends Component {
           <CustomButton action={this.handleUp} label="+" />
         </View>
       </View>
-    );
+    )
   }
 }
 
@@ -72,6 +78,6 @@ const styles = StyleSheet.create({
     color: '#FFF',
     fontWeight: 'bold'
   }
-});
+})
 
-export default App;
+export default App
